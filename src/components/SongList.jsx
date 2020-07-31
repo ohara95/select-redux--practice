@@ -1,42 +1,33 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { selectSong } from "../actions";
 import { Item, Button, List } from "semantic-ui-react";
 
-class SongList extends Component {
-  renderList() {
-    // selectSong();//オブジェクトが返るだけ？
-    // console.log(this.props);
-    return this.props.songs.map((song) => {
+const SongList = ({ songs, selectSong }) => {
+  const renderList = () => {
+    return songs.map((song) => {
       return (
-        <Item>
-          <Item.Content right floated>
-            <Button onClick={() => this.props.selectSong(song)}>select</Button>
+        <Item key={song.title}>
+          <Item.Content>
+            <Button
+              floated="right"
+              basic
+              color="blue"
+              onClick={() => selectSong(song)}
+            >
+              select
+            </Button>
           </Item.Content>
           <Item.Content>{song.title}</Item.Content>
         </Item>
       );
     });
-  }
-
-  render() {
-    return <List>{this.renderList()}</List>;
-  }
-}
+  };
+  return <List>{renderList()}</List>;
+};
 
 const mapStateTopProps = (state) => {
-  console.log(state);
   return { songs: state.songs };
 };
 
 export default connect(mapStateTopProps, { selectSong })(SongList);
-
-// const SongList = () => {
-//   return <div>SongList</div>;
-// };
-
-// const mapStateTopProps = (state) => {
-//   return { songs: state.songs };
-// };
-
-// export default connect(mapStateTopProps)(SongList);

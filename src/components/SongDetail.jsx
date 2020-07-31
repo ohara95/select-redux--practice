@@ -1,9 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import reducers from "../reducers";
 
 const SongDetail = ({ song }) => {
-  // console.log(props);
   if (!song) {
     return <div>Select a song</div>;
   }
@@ -20,8 +18,6 @@ const SongDetail = ({ song }) => {
 };
 
 const mapStateToProps = (state) => {
-  // reducers/indexより
-  // キーはコンソールに出る名前
   return { song: state.selectedSong };
 };
 

@@ -9,6 +9,7 @@ const songsReducer = () => {
   ];
 };
 
+// selectedSongは曲が入る変数？
 const selectedSongReducer = (selectedSong = null, action) => {
   switch (action.type) {
     case "SONG_SELECTED":

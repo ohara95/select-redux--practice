@@ -6,7 +6,7 @@ import { Grid, GridColumn } from "semantic-ui-react";
 const App = () => {
   return (
     <>
-      <Grid container>
+      <Grid container style={{ marginTop: "30px" }}>
         <Grid.Row>
           <GridColumn width={8}>
             <SongList />
